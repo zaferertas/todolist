@@ -3,26 +3,19 @@ import Shared
 
 struct ContentView: View {
     @State private var showContent = false
+    
+    @StateObject var viewModel = SwiftTasksViewModel()
+    
     var body: some View {
-        VStack {
-            Button("Click me!") {
-                withAnimation {
-                    showContent = !showContent
-                }
+        
+        VStack(alignment: .center) {
+            Text("Todo List")
+            List(viewModel.tasks, id: \.id) { task in
+                Text(task.title)
             }
-
-            if showContent {
-                VStack(spacing: 16) {
-                    Image(systemName: "swift")
-                        .font(.system(size: 200))
-                        .foregroundColor(.accentColor)
-                    Text("SwiftUI: \(Greeting().greet())")
-                }
-                .transition(.move(edge: .top).combined(with: .opacity))
-            }
+        }.task {
+            await viewModel.activate()
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .padding()
     }
 }
 
