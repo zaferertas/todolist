@@ -4,7 +4,6 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
 }
 
@@ -60,7 +59,6 @@ dependencies {
     implementation(libs.androidx.compose.material)
     implementation(libs.androidx.compose.runtime)
     implementation(libs.androidx.compose.ui)
-    implementation(compose.preview)
 
     implementation(libs.androidx.compose.material3)
 
@@ -71,7 +69,7 @@ dependencies {
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
 
-    debugImplementation(compose.uiTooling)
+    debugImplementation(libs.androidx.compose.tooling)
 
     testImplementation(libs.junit)
     testImplementation(libs.koin.test)

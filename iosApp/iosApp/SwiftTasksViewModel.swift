@@ -3,7 +3,8 @@ import Shared
 
 class SwiftTasksViewModel: ObservableObject {
     
-    let viewModel = TasksViewModel()
+//    let viewModel = TasksViewModel()
+    let viewModel = KotlinDependencies.shared.getTasksViewModel()
 
     @Published
     private(set) var tasks: [Task] = []

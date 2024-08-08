@@ -7,39 +7,14 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.stateIn
 
-class TasksViewModel : ViewModel() {
+class TasksViewModel(
+    private val tasksRepository: TasksRepository
+) : ViewModel() {
 
-    val tasks: StateFlow<List<Task>> = flowOf(dummyTasksList)
+    val tasks: StateFlow<List<Task>> = flowOf(tasksRepository.getTasks())
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
     fun addTask(name: String, description: String?) {
-
+        tasksRepository.addTask(name, description)
     }
 }
-
-val dummyTasksList = listOf(
-    Task(
-        id = 0,
-        title = "Task 1",
-        description = null,
-        isCompleted = false,
-    ),
-    Task(
-        id = 1,
-        title = "Task 2",
-        description = null,
-        isCompleted = false,
-    ),
-    Task(
-        id = 2,
-        title = "Task 3",
-        description = null,
-        isCompleted = true,
-    ),
-    Task(
-        id = 3,
-        title = "Task 4",
-        description = null,
-        isCompleted = false,
-    )
-)

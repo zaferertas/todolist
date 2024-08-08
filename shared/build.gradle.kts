@@ -7,8 +7,6 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.ksp)
     alias(libs.plugins.skie)
-    alias(libs.plugins.jetbrainsCompose)
-    alias(libs.plugins.compose.compiler)
 }
 
 kotlin {
@@ -36,18 +34,10 @@ kotlin {
             implementation(libs.kotlinx.coroutines)
             api(libs.kotlinx.datetime)
 
-            api(libs.koin.core)
-            implementation(libs.koin.compose)
-            implementation(libs.koin.composeVM)
+            implementation(libs.koin.core)
             implementation(libs.koin.test)
 
             api(libs.androidx.lifecycle.viewmodel)
-
-            implementation(compose.ui)
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material3)
-            implementation(compose.components.resources)
         }
         androidMain.dependencies {
             
@@ -76,9 +66,3 @@ skie {
         enableSwiftUIObservingPreview = true
     }
 }
-
-//tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().configureEach {
-//    if (name != "kspSharedMainKotlinMetadata" ) {
-//        dependsOn("kspSharedMainKotlinMetadata")
-//    }
-//}
