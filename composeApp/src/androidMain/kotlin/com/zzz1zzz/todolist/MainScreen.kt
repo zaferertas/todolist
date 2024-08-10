@@ -5,13 +5,18 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.zzz1zzz.todolist.viewModel.TaskViewModel
 import org.koin.androidx.compose.koinViewModel
 
 
@@ -20,7 +25,7 @@ import org.koin.androidx.compose.koinViewModel
 fun MainScreen(
     modifier: Modifier = Modifier,
 ) {
-    val viewModel: TasksViewModel = koinViewModel()
+    val viewModel: TaskViewModel = koinViewModel()
     val tasks = viewModel.tasks.collectAsStateWithLifecycle()
 
     Scaffold(
@@ -33,6 +38,18 @@ fun MainScreen(
                 actions = {
                 }
             )
+        },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = {
+                    viewModel.addTask("title_test 2", "description_test")
+                }
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.Add,
+                    contentDescription = "Add task" // TODO get from resources
+                )
+            }
         }
     ) { contentPadding ->
         Box(

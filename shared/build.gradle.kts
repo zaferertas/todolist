@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.ksp)
     alias(libs.plugins.skie)
+    alias(libs.plugins.sqldelight)
 }
 
 kotlin {
@@ -25,7 +26,8 @@ kotlin {
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
             baseName = "Shared"
-            isStatic = true
+            isStatic = false
+            linkerOpts("-lsqlite3")
         }
     }
     
@@ -38,13 +40,16 @@ kotlin {
             implementation(libs.koin.test)
 
             api(libs.androidx.lifecycle.viewmodel)
+
+            implementation(libs.sqldelight.runtime)
+            implementation(libs.sqldelight.coroutines)
         }
         androidMain.dependencies {
-            
+            implementation(libs.sqldelight.android.driver)
         }
 
         iosMain.dependencies {
-
+            implementation(libs.sqldelight.native.driver)
         }
     }
 }
@@ -64,5 +69,13 @@ android {
 skie {
     features {
         enableSwiftUIObservingPreview = true
+    }
+}
+
+sqldelight {
+    databases {
+        create("AppDatabase") {
+            packageName.set("com.zzz1zzz.todolist")
+        }
     }
 }

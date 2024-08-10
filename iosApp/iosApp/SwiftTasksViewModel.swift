@@ -4,7 +4,7 @@ import Shared
 class SwiftTasksViewModel: ObservableObject {
     
 //    let viewModel = TasksViewModel()
-    let viewModel = KotlinDependencies.shared.getTasksViewModel()
+    private let viewModel = KotlinDependencies.shared.getTaskViewModel()
 
     @Published
     private(set) var tasks: [Task] = []
@@ -14,5 +14,9 @@ class SwiftTasksViewModel: ObservableObject {
         for await tasks in viewModel.tasks {
             self.tasks = tasks
         }
+    }
+    
+    func addTask(title: String, description: String?) {
+        viewModel.addTask(title: title, description: description)
     }
 }

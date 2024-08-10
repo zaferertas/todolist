@@ -13,6 +13,9 @@ struct ContentView: View {
             List(viewModel.tasks, id: \.id) { task in
                 Text(task.title)
             }
+            Button("Save") {
+                viewModel.addTask(title: "title test", description: "description test")
+            }
         }.task {
             await viewModel.activate()
         }

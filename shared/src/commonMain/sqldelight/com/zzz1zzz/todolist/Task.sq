@@ -1,0 +1,25 @@
+import kotlin.Boolean;
+
+CREATE TABLE Taskdata (
+id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+title TEXT NOT NULL,
+description TEXT,
+isCompleted INTEGER AS Boolean NOT NULL DEFAULT 0,
+completionDateUTC TEXT
+);
+
+selectAll:
+SELECT * FROM Taskdata;
+
+selectById:
+SELECT * FROM Taskdata WHERE id = ?;
+
+insertTask:
+INSERT OR IGNORE INTO Taskdata(title, description)
+VALUES (?, ?);
+
+deleteAll:
+DELETE FROM Taskdata;
+
+updateTitle:
+UPDATE Taskdata SET title = ? WHERE id = ?;
