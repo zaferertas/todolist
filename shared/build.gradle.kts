@@ -26,7 +26,7 @@ kotlin {
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
             baseName = "Shared"
-            isStatic = false
+            isStatic = false // TODO what is this?
             linkerOpts("-lsqlite3")
         }
     }

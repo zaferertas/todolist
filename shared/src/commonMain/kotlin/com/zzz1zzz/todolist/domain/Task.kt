@@ -5,5 +5,6 @@ data class Task(
     val title: String,
     val description: String?,
     val isCompleted: Boolean,
-    val completionDate: String?
+    val createdAt: String,
+    val completeAt: String?,
 )
