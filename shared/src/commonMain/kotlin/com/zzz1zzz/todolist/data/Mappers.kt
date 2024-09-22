@@ -13,7 +13,7 @@ fun Taskdata.asDomain(dateTimeService: DateTimeService) = Task(
     createdAt = with(dateTimeService) {
         formatDateTime(createdAt.toLocalDateTime())
     },
-    completeAt = with(dateTimeService) {
+    completedAt = with(dateTimeService) {
         completedAt?.let {
             formatDateTime(it.toLocalDateTime())
         }

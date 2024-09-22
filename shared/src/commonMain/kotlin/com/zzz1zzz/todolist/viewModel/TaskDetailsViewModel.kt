@@ -10,23 +10,25 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class TaskDetailsViewModel(
-    private val taskRepository: TaskRepository,
-) : ViewModel() {
+class TaskDetailsViewModel : ViewModel(), KoinComponent {
 
-    private var _state = MutableStateFlow<TaskDetailsUiState>(TaskDetailsUiState.Loading)
-    val state: StateFlow<TaskDetailsUiState>
-        get() = _state
+    private val taskRepository: TaskRepository by inject()
+
+    private var _uiState = MutableStateFlow<TaskDetailsUiState>(TaskDetailsUiState.Loading)
+    val uiState: StateFlow<TaskDetailsUiState>
+        get() = _uiState
 
     private lateinit var taskJob: Job
 
     fun fetchTask(taskId: Long) {
         taskJob = viewModelScope.launch(Dispatchers.IO) {
             taskRepository.getTask(taskId).collect {
-                _state.value = TaskDetailsUiState.Success(it)
+                _uiState.value = TaskDetailsUiState.Success(it)
             }.runCatching {
-                _state.value = TaskDetailsUiState.Error
+                _uiState.value = TaskDetailsUiState.Error
             }
         }
     }

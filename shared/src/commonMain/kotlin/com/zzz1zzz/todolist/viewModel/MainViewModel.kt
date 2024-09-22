@@ -12,10 +12,12 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class MainViewModel(
-    private val taskRepository: TaskRepository,
-) : ViewModel() {
+class MainViewModel : ViewModel(), KoinComponent {
+
+    private val taskRepository: TaskRepository by inject()
 
     val uiState: StateFlow<MainUiState> = taskRepository.getTasks()
         .map { tasks ->

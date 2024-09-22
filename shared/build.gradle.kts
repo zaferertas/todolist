@@ -28,6 +28,7 @@ kotlin {
             baseName = "Shared"
             isStatic = false // TODO what is this?
             linkerOpts("-lsqlite3")
+            export(libs.androidx.lifecycle.viewmodel)
         }
     }
     

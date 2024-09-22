@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.zzz1zzz.todolist.ui.TaskAddEditForm
 import com.zzz1zzz.todolist.viewModel.AddTaskViewModel
 import org.koin.androidx.compose.koinViewModel
@@ -88,6 +89,7 @@ private fun AddTaskScreen(
             var description by remember { mutableStateOf<String?>(null) }
 
             TaskAddEditForm(
+                modifier = Modifier.padding(8.dp),
                 title = title,
                 onTitleChanged = { title = it },
                 description = description,

@@ -49,7 +49,7 @@ fun TaskDetailsRoute(
     onBackClick: () -> Unit = {},
 ) {
     val viewModel: TaskDetailsViewModel = koinViewModel()
-    val uiState by viewModel.state.collectAsStateWithLifecycle()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     LaunchedEffect(taskId) {
         viewModel.fetchTask(taskId)
@@ -185,7 +185,7 @@ private fun SuccessView(
             text = "Created at: ${task.createdAt}",
             style = MaterialTheme.typography.bodySmall,
         )
-        task.completeAt?.let {
+        task.completedAt?.let {
             Text(
                 text = "Completed at: $it",
                 style = MaterialTheme.typography.bodySmall,
