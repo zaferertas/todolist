@@ -20,6 +20,7 @@ junit = "4.13.2"
 
 skie = "0.8.4"
 koin = "3.6.0-Beta4"
+kermit = "2.0.4"
 
 datastore = "1.1.1"
 sqldelight = "2.0.2"
@@ -62,6 +63,8 @@ sqldelight-native-driver = { module = "app.cash.sqldelight:native-driver", versi
 sqldelight-android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
 sqldelight-runtime = { module = "app.cash.sqldelight:runtime", version.ref = "sqldelight" }
 sqldelight-coroutines = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
+
+kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "androidGradlePlugin" }

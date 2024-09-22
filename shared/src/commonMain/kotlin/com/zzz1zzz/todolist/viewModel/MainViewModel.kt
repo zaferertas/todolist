@@ -2,8 +2,10 @@ package com.zzz1zzz.todolist.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import co.touchlab.kermit.Logger
 import com.zzz1zzz.todolist.domain.Task
 import com.zzz1zzz.todolist.domain.TaskRepository
+import com.zzz1zzz.todolist.viewModel.AddTaskViewModel.Companion
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.SharingStarted
@@ -21,6 +23,7 @@ class MainViewModel : ViewModel(), KoinComponent {
 
     val uiState: StateFlow<MainUiState> = taskRepository.getTasks()
         .map { tasks ->
+            Logger.d(TAG) {"uiState success, map tasks count: ${tasks.count()}"}
             val (activeTasks, completedTasks) = tasks.partition { !it.isCompleted }
             MainUiState.Success(activeTasks, completedTasks)
         }.catch {
@@ -34,8 +37,13 @@ class MainViewModel : ViewModel(), KoinComponent {
 
     fun setIsCompleted(taskId: Long, isCompleted: Boolean) =
         viewModelScope.launch(Dispatchers.IO) {
+            Logger.d(TAG) {"setIsCompleted, taskId: $taskId, isCompleted: $isCompleted"}
             taskRepository.setCompleted(taskId, isCompleted)
         }
+
+    companion object {
+        private const val TAG = "MainViewModel"
+    }
 }
 
 sealed class MainUiState {
