@@ -2,8 +2,8 @@
 
 androidGradlePlugin = "8.5.2"
 
-kotlin = "2.0.10"
-ksp = "2.0.10-1.0.24"
+kotlin = "2.0.20"
+ksp = "2.0.20-1.0.25"
 kotlinxCoroutines = "1.9.0"
 kotlinxSerializationJson = "1.7.2"
 kotlinxDateTime = "0.6.1"
@@ -18,11 +18,10 @@ androidx-espresso-core = "3.6.1"
 androidx-test-junit = "1.2.1"
 junit = "4.13.2"
 
-skie = "0.8.4"
-koin = "3.6.0-Beta4"
+skie = "0.9.0"
+koin = "4.0.0"
 kermit = "2.0.4"
 
-datastore = "1.1.1"
 sqldelight = "2.0.2"
 
 android-targetSdk = "34"
