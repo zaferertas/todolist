@@ -59,13 +59,13 @@ kotlin {
 
 android {
     namespace = "com.zzz1zzz.todolist.shared"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
+    compileSdk = libs.versions.compileSdk.get().toInt()
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
     defaultConfig {
-        minSdk = libs.versions.android.minSdk.get().toInt()
+        minSdk = libs.versions.minSdk.get().toInt()
     }
 }
 
