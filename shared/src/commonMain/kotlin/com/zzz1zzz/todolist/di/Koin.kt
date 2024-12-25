@@ -8,7 +8,7 @@ import com.zzz1zzz.todolist.data.adapter.InstantSqlDelightAdapter
 import com.zzz1zzz.todolist.domain.DateTimeService
 import com.zzz1zzz.todolist.domain.TaskRepository
 import com.zzz1zzz.todolist.viewModel.AddTaskViewModel
-import com.zzz1zzz.todolist.viewModel.MainViewModel
+import com.zzz1zzz.todolist.viewModel.TasksViewModel
 import com.zzz1zzz.todolist.viewModel.TaskDetailsViewModel
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
@@ -37,7 +37,7 @@ val commonModule = module {
             )
         )
     }
-    factoryOf(::MainViewModel)
+    factoryOf(::TasksViewModel)
     factoryOf(::AddTaskViewModel)
     factoryOf(::TaskDetailsViewModel)
     singleOf(::TaskDataSource)

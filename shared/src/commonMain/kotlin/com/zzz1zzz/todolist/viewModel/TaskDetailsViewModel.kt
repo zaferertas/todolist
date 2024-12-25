@@ -22,10 +22,10 @@ class TaskDetailsViewModel : ViewModel(), KoinComponent {
     val uiState: StateFlow<TaskDetailsUiState>
         get() = _uiState
 
-    private lateinit var taskJob: Job
+    private lateinit var taskFetchingJob: Job
 
     fun fetchTask(taskId: Long) {
-        taskJob = viewModelScope.launch(Dispatchers.IO) {
+        taskFetchingJob = viewModelScope.launch(Dispatchers.IO) {
             taskRepository.getTask(taskId).collect {
                 Logger.d(TAG) {"fetchTask success. Task collected. task: $it"}
                 _uiState.value = TaskDetailsUiState.Success(it)
@@ -48,7 +48,7 @@ class TaskDetailsViewModel : ViewModel(), KoinComponent {
 
     fun deleteTask(taskId: Long) = viewModelScope.launch(Dispatchers.IO) {
         Logger.d(TAG) {"deleteTask, taskId: $taskId"}
-        taskJob.cancel()
+        taskFetchingJob.cancel()
         taskRepository.deleteTask(taskId)
     }
 

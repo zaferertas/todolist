@@ -1,0 +1,22 @@
+<resources>
+    resources>
+    <string name="app_name">Lista de Tareas</string>
+    <string name="screen_name_tasks">Tareas</string>
+    <string name="screen_name_task_details">Detalles de la Tarea</string>
+    <string name="screen_name_settings">Ajustes</string>
+    <string name="screen_name_add_task">Agregar Tarea</string>
+    <string name="label_back">Atrás</string>
+    <string name="label_delete">Eliminar</string>
+    <string name="label_cancel">Cancelar</string>
+    <string name="label_active">Activa</string>
+    <string name="label_save">Guardar</string>
+    <string name="label_completed">Completada</string>
+    <string name="label_title">Título</string>
+    <string name="label_description">Descripción</string>
+    <string name="label_set_as_active">Marcar como activa</string>
+    <string name="label_set_as_completed">Marcar como completada</string>
+    <string name="text_created_at">Creada en: %1$s</string>
+    <string name="text_completed_at">Completada en: %1$s</string>
+    <string name="title_delete_task">¿Eliminar Tarea?</string>
+    <string name="text_delete_task">¿Desea eliminar esta tarea?</string>
+</resources>

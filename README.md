@@ -2,18 +2,21 @@
 
 ![badge-android](http://img.shields.io/badge/platform-android-6EDB8D.svg?style=flat)
 ![badge-desktop](http://img.shields.io/badge/platform-ios-EAEAEA.svg?style=flat)
-![badge-desktop](http://img.shields.io/badge/platform-desktop-4D76CD.svg?style=flat)
 
 ## General Info
 
-A Kotlin Multiplatform demo project targeting Android and iOS using native UI libraries: Jetpack Compose for Android and SwiftUI for IOS.
+A Kotlin Multiplatform demo project targeting Android and iOS.
 
-Please visit https://github.com/zaferertas/todolistCMP for the same app that is developed using Compose Multiplatform as shared UI for all platforms.
+The business logic (data, domain and viewmodels) is written in Kotlin and shared across all platforms. The UI components are built using Compose Multiplatform and SwiftUI.
 
-## Architecture
-The app is shared between Android and iOS. The shared code is written in Kotlin and the UI parts are built with Jetpack Compose for Android and SwiftUI for IOS. Shared code, written in Kotlin, is compiled to JVM bytecode for Android and to native binaries for iOS with Kotlin/Native.
+ To demonstrate different UI sharing strategies, 3 apps have been developed for the IOS platform. 
 
-Shared data includes data, domain and viewmodels. 
+| App              | UI                                                                    | 
+|------------------|-----------------------------------------------------------------------|
+| androidApp       | Compose Multiplatform                                                 |
+| iosApp           | SwiftUI                                                               |
+| iosAppCMP        | Compose Multiplatform                                                 |
+| iosAppSwiftuiCMP | Hybrid: Navigation and controls with SwiftUi, Screen Content with CMP |
 
 ## Run project
 ### Android
@@ -27,10 +30,16 @@ To run the application on iPhone device/simulator:
 
 ## Screenshots
 ### Android
-<img src="art/Screenshot_android.png"  width="250" alt="Android"/>
+<img src="art/Screenshot android.png"  width="250" alt="Android"/>
 
-### iOS
-<img src="art/Screenshot_ios.png"  width="250" alt="IOS"/>
+### iOS with SwiftUI
+<img src="art/screenshot_ios_swiftui.png"  width="250" alt="IOS"/>
+
+### iOS with CMP
+<img src="art/screenshot_ios_cmp.png"  width="250" alt="IOS"/>
+
+### iOS with SwiftUI and CMP
+<img src="art/screenshot_ios_swiftui_cmp.png"  width="250" alt="IOS"/>
 
 ## Libraries used
 - 🧩 [Jetpack Compose](https://developer.android.com/compose); for the Android UI

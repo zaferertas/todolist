@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Yapılacaklar Listesi</string>
+    <string name="screen_name_tasks">Görevler</string>
+    <string name="screen_name_task_details">Görev detayları</string>
+    <string name="screen_name_settings">Ayarlar</string>
+    <string name="screen_name_add_task">Görev ekle</string>
+    <string name="label_back">Geri</string>
+    <string name="label_delete">Sil</string>
+    <string name="label_cancel">İptal</string>
+    <string name="label_save">Kaydet</string>
+    <string name="label_active">Aktif</string>
+    <string name="label_completed">Tamamlandı</string>
+    <string name="label_title">Başlık</string>
+    <string name="label_description">Açıklama</string>
+    <string name="label_set_as_active">Aktif yap</string>
+    <string name="label_set_as_completed">Tamamlandı yap</string>">
+    <string name="text_created_at">%1$s tarihine oluşturuldu.</string>
+    <string name="text_completed_at">%1$s tarihine tamamlandı.</string>
+    <string name="title_delete_task">Görev silinecek</string>
+    <string name="text_delete_task">Görev silmek istediğinize emin misiniz?</string>
+</resources>

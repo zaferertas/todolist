@@ -26,8 +26,9 @@ kotlin {
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
             baseName = "Shared"
-            isStatic = false // TODO what is this?
+            isStatic = false
             linkerOpts("-lsqlite3")
+//            binaryOption("bundleId", "com.zzz1zzz.todolist.TodoList.shared")
             export(libs.androidx.lifecycle.viewmodel)
         }
     }

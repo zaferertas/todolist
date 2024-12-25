@@ -7,7 +7,6 @@ struct TaskDetailsView: View {
     
     let taskId: Int64
     @Binding var navigationPath: NavigationPath
-    
     @State private var isPresentingDeleteAlert: Bool = false
     
     var body: some View {
@@ -17,7 +16,7 @@ struct TaskDetailsView: View {
                 case .error:
                     ErrorView()
                 case .success(let result):
-                    SuccessView(
+                    TaskDetailsContent(
                         task: Binding(get: { return result.task }, set: { _ in }),
                         onSaveClick: { title, description in
                             viewModelHolder.instance.updateTask(taskId: taskId, title: title, description: description)
@@ -53,7 +52,7 @@ struct TaskDetailsView: View {
         }
     }
     
-    private struct SuccessView: View {
+    private struct TaskDetailsContent: View {
         @Binding var task: Task
 
         @State private var title: String = ""
@@ -103,7 +102,7 @@ struct TaskDetailsView: View {
         }
     }
 }
-#Preview {
-    @State var navigationPath = NavigationPath()
-    return TaskDetailsView(taskId: 1, navigationPath: $navigationPath)
-}
+//#Preview {
+//    @State var navigationPath = NavigationPath()
+//    return TaskDetailsView(taskId: 1, navigationPath: $navigationPath)
+//}
